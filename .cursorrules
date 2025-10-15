@@ -1,0 +1,219 @@
+# Twitter Customer Support Analytics App - Cursor Rules
+
+## Project Overview
+This is a lightweight Twitter customer support analytics application built with Streamlit. The app analyzes response times and customer sentiment to provide actionable insights for support team performance improvement.
+
+## Technology Stack & Architecture
+- **Primary Framework**: Streamlit (Python) for single-file web application
+- **Data Processing**: pandas for CSV manipulation and calculations
+- **Sentiment Analysis**: VADER (Valence Aware Dictionary and sEntiment Reasoner)
+- **Visualization**: Plotly for interactive charts and graphs
+- **Data Storage**: CSV files (no database required)
+- **Deployment Target**: Streamlit Cloud or local hosting
+
+## Code Structure & Organization
+```
+twitter-support-analytics/
+├── app.py                 # Main Streamlit application entry point
+├── data_processor.py      # CSV processing and response time calculations
+├── sentiment_analyzer.py  # VADER sentiment analysis implementation
+├── visualizations.py      # Plotly chart generation functions
+├── config.py             # Configuration settings and constants
+├── requirements.txt      # Python dependencies with pinned versions
+├── scope.md             # Project scope and progress tracking
+└── sample_data/         # Sample CSV files for testing
+```
+
+## Development Guidelines
+
+### Python Code Standards
+- Follow PEP 8 style guidelines
+- Use type hints for function parameters and return values
+- Write docstrings for all functions and classes
+- Use meaningful variable names that describe business logic
+- Keep functions focused and under 50 lines when possible
+- Use list comprehensions for simple transformations
+- Prefer pandas operations over loops for data manipulation
+
+### Streamlit Best Practices
+- Use `st.set_page_config()` at the top of app.py
+- Organize the app with clear sections using `st.header()` and `st.subheader()`
+- Use `st.sidebar` for filters and controls
+- Implement caching with `@st.cache_data` for expensive operations
+- Use `st.columns()` for responsive layouts
+- Add loading states with `st.spinner()` for long operations
+- Use `st.error()`, `st.warning()`, `st.success()` for user feedback
+
+### Data Processing Patterns
+- Always validate CSV structure before processing
+- Handle missing values gracefully with appropriate defaults
+- Use pandas datetime parsing for timestamp columns
+- Implement data type conversion with error handling
+- Cache processed data to avoid reprocessing
+- Use vectorized operations for performance
+
+### Visualization Guidelines
+- Use Plotly for all interactive charts
+- Implement consistent color schemes across charts
+- Add hover information and tooltips for better UX
+- Use appropriate chart types (bar, line, scatter, heatmap)
+- Include titles, axis labels, and legends
+- Make charts responsive and mobile-friendly
+
+### Sentiment Analysis Implementation
+- Use VADER for sentiment scoring (already handles social media text)
+- Categorize scores: positive (>0.05), negative (<-0.05), neutral (-0.05 to 0.05)
+- Handle edge cases like empty strings or special characters
+- Cache sentiment results to avoid reprocessing
+- Provide confidence scores alongside sentiment categories
+
+## File-Specific Guidelines
+
+### app.py
+- Main entry point with clear Streamlit page structure
+- Import all other modules at the top
+- Use session state for maintaining user selections
+- Implement error handling with try-catch blocks
+- Add progress bars for long-running operations
+
+### data_processor.py
+- Focus on CSV loading, validation, and response time calculations
+- Return pandas DataFrames from processing functions
+- Include data quality checks and validation
+- Handle timezone considerations for timestamps
+- Provide summary statistics and data quality reports
+
+### sentiment_analyzer.py
+- Implement VADER sentiment analysis with configuration
+- Return structured results (score, category, confidence)
+- Handle text preprocessing (lowercase, punctuation)
+- Batch process messages for efficiency
+- Provide sentiment distribution statistics
+
+### visualizations.py
+- Create reusable chart functions that accept DataFrames
+- Return Plotly figure objects for Streamlit integration
+- Implement consistent styling and themes
+- Add interactive features (zoom, filter, hover)
+- Export functionality for charts
+
+### config.py
+- Define all configuration constants
+- Set default values for app settings
+- Include color schemes and styling options
+- Define file paths and naming conventions
+- Set performance thresholds and limits
+
+## Performance Considerations
+- Use `@st.cache_data` for CSV loading and processing
+- Implement lazy loading for large datasets
+- Use pandas vectorized operations instead of loops
+- Cache sentiment analysis results
+- Optimize chart rendering with data sampling if needed
+- Set reasonable limits for data processing (e.g., max 50k rows)
+
+## Error Handling & Validation
+- Validate CSV file structure and required columns
+- Handle missing or malformed data gracefully
+- Provide clear error messages to users
+- Implement data quality checks and warnings
+- Use try-catch blocks around all file operations
+- Validate user inputs and selections
+
+## User Experience Guidelines
+- Provide clear instructions and help text
+- Use consistent terminology throughout the app
+- Implement intuitive navigation and layout
+- Add loading indicators for long operations
+- Provide export functionality for results
+- Make the interface responsive for different screen sizes
+
+## Testing & Quality Assurance
+- Test with sample data of various sizes
+- Verify sentiment analysis accuracy with known examples
+- Test response time calculations with edge cases
+- Validate chart rendering and interactivity
+- Test error handling with malformed data
+- Ensure app works in different browsers and devices
+
+## Dependencies Management
+- Pin specific versions in requirements.txt
+- Use virtual environments for development
+- Document any system-level dependencies
+- Test deployment on Streamlit Cloud
+- Include setup instructions in README.md
+
+## Security & Privacy Considerations
+- No sensitive data should be hardcoded
+- Implement data sanitization for user inputs
+- Consider data privacy for customer support data
+- Use environment variables for configuration
+- Follow secure coding practices
+
+## Documentation Requirements
+- Document all public functions with docstrings
+- Include inline comments for complex logic
+- Update scope.md with progress and changes
+- Create comprehensive README.md with setup instructions
+- Document any assumptions about data format
+
+## Deployment Guidelines
+- Ensure app works locally before cloud deployment
+- Test with realistic data volumes
+- Optimize for Streamlit Cloud limitations
+- Include error handling for deployment issues
+- Provide clear deployment instructions
+
+## Code Review Checklist
+- [ ] Follows Python PEP 8 standards
+- [ ] Includes appropriate type hints
+- [ ] Has comprehensive docstrings
+- [ ] Implements proper error handling
+- [ ] Uses Streamlit best practices
+- [ ] Includes performance optimizations
+- [ ] Has been tested with sample data
+- [ ] Follows project structure guidelines
+- [ ] Updates documentation as needed
+
+## Common Patterns to Follow
+
+### Data Loading Pattern
+```python
+@st.cache_data
+def load_and_validate_csv(file_path: str) -> pd.DataFrame:
+    """Load CSV and validate required columns."""
+    try:
+        df = pd.read_csv(file_path)
+        # validation logic
+        return df
+    except Exception as e:
+        st.error(f"Error loading data: {e}")
+        return pd.DataFrame()
+```
+
+### Sentiment Analysis Pattern
+```python
+def analyze_sentiment(text: str) -> dict:
+    """Analyze sentiment and return structured result."""
+    if not text or pd.isna(text):
+        return {"score": 0, "category": "neutral", "confidence": 0}
+    
+    # VADER analysis
+    # return structured result
+```
+
+### Visualization Pattern
+```python
+def create_response_time_chart(df: pd.DataFrame) -> go.Figure:
+    """Create interactive response time visualization."""
+    fig = go.Figure()
+    # chart configuration
+    return fig
+```
+
+## Notes
+- Keep the codebase lightweight and focused
+- Prioritize user experience and performance
+- Document decisions and trade-offs
+- Update this file as the project evolves
+- Maintain consistency across all modules

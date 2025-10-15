@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "./data"
+      ],
+      "description": "File system access for data directory",
+      "enabled": true
+    }
+  },
+  "description": "MCP Configuration for Customer Support Analytics App - Provides file system access to the data directory for RAG insights feature"
+}
+

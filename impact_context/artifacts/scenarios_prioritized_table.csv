@@ -1,0 +1,11 @@
+name,impact,effort,notes,priority_score
+SLA Dashboard,9,4,"Live medians, breach rate, backlog",6.6
+Smart Triage,8,5,Route by urgency/brand/topic,5.0
+Agent Assist (GenAI),9,7,"Template replies, tone guides",4.8
+Sentiment Health Monitor,7,4,Daily %neg & alerts,4.6
+Escalation Predictor,8,6,Text features + response lag,4.4
+Conversation Explorer,6,3,Thread graph & search,4.2
+Auto-Tagging,6,3,Improve taxonomy & reporting,4.2
+Capacity Planner,7,5,"Forecast volume, staffing",4.0
+KPI Coach (GenAI),7,5,Suggest next-best actions,4.0
+Compliance Scanner,6,4,Flag sensitive content,3.6

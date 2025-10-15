@@ -1,0 +1,8 @@
+column,dtype,null_count_sample,non_null_count_sample,unique_count_sample
+tweet_id,int64,0,20000,20000
+author_id,object,0,20000,5672
+inbound,bool,0,20000,2
+created_at,object,0,20000,17726
+text,object,0,20000,19949
+response_tweet_id,object,6562,13438,13438
+in_response_to_tweet_id,float64,5203,14797,13458

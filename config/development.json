@@ -1,0 +1,182 @@
+{
+  "environment": "development",
+  "database": {
+    "type": "sqlite",
+    "params": {
+      "database": "dev_support.db"
+    },
+    "connection_pool": {
+      "min_connections": 1,
+      "max_connections": 10,
+      "timeout": 30
+    }
+  },
+  "apis": {
+    "zendesk": {
+      "base_url": "https://devcompany.zendesk.com",
+      "credentials": {
+        "email": "dev@company.com",
+        "token": "dev_zendesk_token"
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      "refresh_interval": 60,
+      "rate_limit": {
+        "requests_per_minute": 100,
+        "burst_limit": 10
+      }
+    },
+    "freshdesk": {
+      "base_url": "https://devcompany.freshdesk.com",
+      "credentials": {
+        "api_key": "dev_freshdesk_key"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "refresh_interval": 120,
+      "rate_limit": {
+        "requests_per_minute": 50,
+        "burst_limit": 5
+      }
+    },
+    "intercom": {
+      "base_url": "https://api.intercom.io",
+      "credentials": {
+        "token": "dev_intercom_token"
+      },
+      "headers": {
+        "Authorization": "Bearer dev_intercom_token",
+        "Content-Type": "application/json"
+      },
+      "refresh_interval": 90,
+      "rate_limit": {
+        "requests_per_minute": 200,
+        "burst_limit": 20
+      }
+    },
+    "slack": {
+      "base_url": "https://slack.com/api",
+      "credentials": {
+        "token": "xoxb-dev-slack-token"
+      },
+      "headers": {
+        "Authorization": "Bearer xoxb-dev-slack-token",
+        "Content-Type": "application/json"
+      },
+      "refresh_interval": 30,
+      "rate_limit": {
+        "requests_per_minute": 1000,
+        "burst_limit": 100
+      }
+    }
+  },
+  "websockets": {
+    "slack_rtm": {
+      "url": "wss://slack.com/rtm",
+      "auth_token": "xoxb-dev-slack-token",
+      "heartbeat_interval": 30,
+      "reconnect_attempts": 5,
+      "reconnect_delay": 5
+    },
+    "discord_gateway": {
+      "url": "wss://gateway.discord.gg/?v=10&encoding=json",
+      "auth_token": "dev_discord_bot_token",
+      "heartbeat_interval": 30,
+      "reconnect_attempts": 5,
+      "reconnect_delay": 5
+    },
+    "zendesk_events": {
+      "url": "wss://devcompany.zendesk.com/events",
+      "auth_token": "dev_zendesk_token",
+      "heartbeat_interval": 60,
+      "reconnect_attempts": 3,
+      "reconnect_delay": 10
+    }
+  },
+  "cloud_storage": {
+    "aws_s3": {
+      "bucket_name": "dev-support-analytics",
+      "region": "us-east-1",
+      "credentials": {
+        "access_key_id": "dev_aws_access_key",
+        "secret_access_key": "dev_aws_secret_key"
+      },
+      "refresh_interval": 300
+    },
+    "google_cloud": {
+      "bucket_name": "dev-support-analytics",
+      "project_id": "dev-project-id",
+      "credentials": {
+        "service_account_key": "dev_service_account_key.json"
+      },
+      "refresh_interval": 300
+    },
+    "azure_blob": {
+      "container_name": "dev-support-analytics",
+      "account_name": "devstorageaccount",
+      "credentials": {
+        "account_key": "dev_azure_account_key"
+      },
+      "refresh_interval": 300
+    }
+  },
+  "monitoring": {
+    "refresh_interval": 30,
+    "alert_thresholds": {
+      "response_time_high": 60,
+      "sla_breach_rate": 0.1,
+      "sentiment_low": -0.2,
+      "error_rate": 0.05
+    },
+    "notifications": {
+      "email": {
+        "enabled": false,
+        "smtp_server": "smtp.gmail.com",
+        "smtp_port": 587,
+        "username": "dev@company.com",
+        "password": "dev_email_password",
+        "recipients": ["admin@company.com"]
+      },
+      "slack": {
+        "enabled": false,
+        "webhook_url": "https://hooks.slack.com/services/dev/webhook/url",
+        "channel": "#alerts"
+      }
+    }
+  },
+  "cache": {
+    "redis": {
+      "host": "localhost",
+      "port": 6379,
+      "db": 0,
+      "password": null,
+      "ttl": 300
+    },
+    "memory": {
+      "max_size": 1000,
+      "ttl": 60
+    }
+  },
+  "logging": {
+    "level": "INFO",
+    "file": "logs/support_analytics.log",
+    "max_size": "10MB",
+    "backup_count": 5,
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  },
+  "security": {
+    "encryption": {
+      "enabled": true,
+      "algorithm": "AES-256-GCM",
+      "key_file": "config/encryption.key"
+    },
+    "authentication": {
+      "enabled": false,
+      "method": "password",
+      "session_timeout": 3600
+    }
+  }
+}

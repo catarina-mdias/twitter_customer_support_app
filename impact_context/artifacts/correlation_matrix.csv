@@ -1,0 +1,6 @@
+,tweet_id,in_response_to_tweet_id,length,has_question,has_exclaim
+tweet_id,1.0,0.996,-0.067,-0.018,-0.01
+in_response_to_tweet_id,0.996,1.0,-0.06,-0.016,-0.009
+length,-0.067,-0.06,1.0,0.071,0.043
+has_question,-0.018,-0.016,0.071,1.0,-0.023
+has_exclaim,-0.01,-0.009,0.043,-0.023,1.0

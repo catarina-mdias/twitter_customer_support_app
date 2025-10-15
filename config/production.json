@@ -1,0 +1,302 @@
+{
+  "environment": "production",
+  "database": {
+    "type": "postgresql",
+    "params": {
+      "host": "prod-db.company.com",
+      "port": 5432,
+      "database": "support_analytics",
+      "user": "analytics_user",
+      "password": "${DB_PASSWORD}"
+    },
+    "connection_pool": {
+      "min_connections": 5,
+      "max_connections": 50,
+      "timeout": 30
+    },
+    "ssl": {
+      "enabled": true,
+      "cert_file": "/etc/ssl/certs/postgresql.crt",
+      "key_file": "/etc/ssl/private/postgresql.key"
+    }
+  },
+  "apis": {
+    "zendesk": {
+      "base_url": "https://company.zendesk.com",
+      "credentials": {
+        "email": "${ZENDESK_EMAIL}",
+        "token": "${ZENDESK_TOKEN}"
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      "refresh_interval": 60,
+      "rate_limit": {
+        "requests_per_minute": 100,
+        "burst_limit": 10
+      },
+      "retry": {
+        "max_attempts": 3,
+        "backoff_factor": 2,
+        "timeout": 30
+      }
+    },
+    "freshdesk": {
+      "base_url": "https://company.freshdesk.com",
+      "credentials": {
+        "api_key": "${FRESHDESK_API_KEY}"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "refresh_interval": 120,
+      "rate_limit": {
+        "requests_per_minute": 50,
+        "burst_limit": 5
+      },
+      "retry": {
+        "max_attempts": 3,
+        "backoff_factor": 2,
+        "timeout": 30
+      }
+    },
+    "intercom": {
+      "base_url": "https://api.intercom.io",
+      "credentials": {
+        "token": "${INTERCOM_TOKEN}"
+      },
+      "headers": {
+        "Authorization": "Bearer ${INTERCOM_TOKEN}",
+        "Content-Type": "application/json"
+      },
+      "refresh_interval": 90,
+      "rate_limit": {
+        "requests_per_minute": 200,
+        "burst_limit": 20
+      },
+      "retry": {
+        "max_attempts": 3,
+        "backoff_factor": 2,
+        "timeout": 30
+      }
+    },
+    "slack": {
+      "base_url": "https://slack.com/api",
+      "credentials": {
+        "token": "${SLACK_BOT_TOKEN}"
+      },
+      "headers": {
+        "Authorization": "Bearer ${SLACK_BOT_TOKEN}",
+        "Content-Type": "application/json"
+      },
+      "refresh_interval": 30,
+      "rate_limit": {
+        "requests_per_minute": 1000,
+        "burst_limit": 100
+      },
+      "retry": {
+        "max_attempts": 3,
+        "backoff_factor": 2,
+        "timeout": 30
+      }
+    }
+  },
+  "websockets": {
+    "slack_rtm": {
+      "url": "wss://slack.com/rtm",
+      "auth_token": "${SLACK_BOT_TOKEN}",
+      "heartbeat_interval": 30,
+      "reconnect_attempts": 5,
+      "reconnect_delay": 5,
+      "ssl": {
+        "enabled": true,
+        "cert_file": "/etc/ssl/certs/slack.crt"
+      }
+    },
+    "discord_gateway": {
+      "url": "wss://gateway.discord.gg/?v=10&encoding=json",
+      "auth_token": "${DISCORD_BOT_TOKEN}",
+      "heartbeat_interval": 30,
+      "reconnect_attempts": 5,
+      "reconnect_delay": 5,
+      "ssl": {
+        "enabled": true,
+        "cert_file": "/etc/ssl/certs/discord.crt"
+      }
+    },
+    "zendesk_events": {
+      "url": "wss://company.zendesk.com/events",
+      "auth_token": "${ZENDESK_TOKEN}",
+      "heartbeat_interval": 60,
+      "reconnect_attempts": 3,
+      "reconnect_delay": 10,
+      "ssl": {
+        "enabled": true,
+        "cert_file": "/etc/ssl/certs/zendesk.crt"
+      }
+    }
+  },
+  "cloud_storage": {
+    "aws_s3": {
+      "bucket_name": "prod-support-analytics",
+      "region": "us-east-1",
+      "credentials": {
+        "access_key_id": "${AWS_ACCESS_KEY_ID}",
+        "secret_access_key": "${AWS_SECRET_ACCESS_KEY}"
+      },
+      "refresh_interval": 300,
+      "encryption": {
+        "enabled": true,
+        "algorithm": "AES256"
+      }
+    },
+    "google_cloud": {
+      "bucket_name": "prod-support-analytics",
+      "project_id": "${GCP_PROJECT_ID}",
+      "credentials": {
+        "service_account_key": "/etc/gcp/service-account-key.json"
+      },
+      "refresh_interval": 300,
+      "encryption": {
+        "enabled": true,
+        "algorithm": "AES256"
+      }
+    },
+    "azure_blob": {
+      "container_name": "prod-support-analytics",
+      "account_name": "${AZURE_STORAGE_ACCOUNT}",
+      "credentials": {
+        "account_key": "${AZURE_STORAGE_KEY}"
+      },
+      "refresh_interval": 300,
+      "encryption": {
+        "enabled": true,
+        "algorithm": "AES256"
+      }
+    }
+  },
+  "monitoring": {
+    "refresh_interval": 30,
+    "alert_thresholds": {
+      "response_time_high": 60,
+      "sla_breach_rate": 0.1,
+      "sentiment_low": -0.2,
+      "error_rate": 0.05,
+      "cpu_usage": 0.8,
+      "memory_usage": 0.8,
+      "disk_usage": 0.9
+    },
+    "notifications": {
+      "email": {
+        "enabled": true,
+        "smtp_server": "${SMTP_SERVER}",
+        "smtp_port": 587,
+        "username": "${SMTP_USERNAME}",
+        "password": "${SMTP_PASSWORD}",
+        "recipients": ["${ALERT_EMAIL_RECIPIENTS}"],
+        "tls": true
+      },
+      "slack": {
+        "enabled": true,
+        "webhook_url": "${SLACK_WEBHOOK_URL}",
+        "channel": "#alerts",
+        "username": "Support Analytics Bot"
+      },
+      "pagerduty": {
+        "enabled": true,
+        "integration_key": "${PAGERDUTY_INTEGRATION_KEY}",
+        "severity_mapping": {
+          "critical": "critical",
+          "warning": "warning",
+          "info": "info"
+        }
+      }
+    },
+    "metrics": {
+      "prometheus": {
+        "enabled": true,
+        "port": 9090,
+        "path": "/metrics"
+      },
+      "grafana": {
+        "enabled": true,
+        "url": "${GRAFANA_URL}",
+        "api_key": "${GRAFANA_API_KEY}"
+      }
+    }
+  },
+  "cache": {
+    "redis": {
+      "host": "${REDIS_HOST}",
+      "port": 6379,
+      "db": 0,
+      "password": "${REDIS_PASSWORD}",
+      "ttl": 300,
+      "cluster": {
+        "enabled": false,
+        "nodes": []
+      },
+      "ssl": {
+        "enabled": true,
+        "cert_file": "/etc/ssl/certs/redis.crt"
+      }
+    },
+    "memory": {
+      "max_size": 10000,
+      "ttl": 60
+    }
+  },
+  "logging": {
+    "level": "INFO",
+    "file": "/var/log/support-analytics/app.log",
+    "max_size": "100MB",
+    "backup_count": 10,
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    "syslog": {
+      "enabled": true,
+      "host": "localhost",
+      "port": 514,
+      "facility": "local0"
+    }
+  },
+  "security": {
+    "encryption": {
+      "enabled": true,
+      "algorithm": "AES-256-GCM",
+      "key_file": "/etc/ssl/private/encryption.key"
+    },
+    "authentication": {
+      "enabled": true,
+      "method": "oauth2",
+      "session_timeout": 3600,
+      "oauth2": {
+        "provider": "google",
+        "client_id": "${OAUTH2_CLIENT_ID}",
+        "client_secret": "${OAUTH2_CLIENT_SECRET}",
+        "redirect_uri": "${OAUTH2_REDIRECT_URI}"
+      }
+    },
+    "rate_limiting": {
+      "enabled": true,
+      "requests_per_minute": 100,
+      "burst_limit": 20
+    },
+    "cors": {
+      "enabled": true,
+      "allowed_origins": ["${ALLOWED_ORIGINS}"],
+      "allowed_methods": ["GET", "POST", "PUT", "DELETE"],
+      "allowed_headers": ["Content-Type", "Authorization"]
+    }
+  },
+  "performance": {
+    "workers": 4,
+    "max_connections": 1000,
+    "timeout": 30,
+    "keepalive": 2,
+    "compression": {
+      "enabled": true,
+      "level": 6
+    }
+  }
+}

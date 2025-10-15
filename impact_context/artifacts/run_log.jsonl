@@ -1,0 +1,2 @@
+{"ts": "2025-09-29T23:11:55", "action": "parse_yaml", "yaml_path": "/mnt/data/impact_framework.yaml"}
+{"ts": "2025-09-29T23:23:20", "action": "engine_error", "engine": "duckdb", "error": "No module named 'duckdb'"}

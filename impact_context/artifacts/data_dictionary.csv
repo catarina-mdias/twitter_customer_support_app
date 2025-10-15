@@ -1,0 +1,8 @@
+name,type,definition
+tweet_id,int64,Tweet ID
+author_id,object,User ID
+inbound,bool,Direction flag (True=inbound customer)
+created_at,"datetime64[ns, UTC]",Timestamp (UTC)
+text,object,Tweet text
+response_tweet_id,object,Explicit response id
+in_response_to_tweet_id,float64,Implicit reply-to id

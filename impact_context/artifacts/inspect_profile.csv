@@ -1,0 +1,8 @@
+column,dtype,null_count,null_rate_%,unique_count,quality_score_col
+tweet_id,int64,0,0.0,250000,100.0
+author_id,object,0,0.0,67351,100.0
+inbound,bool,0,0.0,2,100.0
+created_at,"datetime64[ns, UTC]",0,0.0,205431,100.0
+text,object,0,0.0,248548,100.0
+response_tweet_id,object,82228,32.8912,167772,77.0
+in_response_to_tweet_id,float64,64025,25.61,168109,82.1

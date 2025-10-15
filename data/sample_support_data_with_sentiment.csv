@@ -1,0 +1,31 @@
+ticket_id,team,created_at,responded_at,customer_message,priority,category
+T001,Team A,2024-01-01 09:00:00,2024-01-01 09:15:00,"I can't access my account and I'm really frustrated! This is the third time this week.",High,Technical
+T002,Team B,2024-01-01 09:30:00,2024-01-01 10:45:00,"Thank you so much for the quick response! You guys are amazing!",Medium,Billing
+T003,Team A,2024-01-01 10:00:00,2024-01-01 10:20:00,"I need help resetting my password please",Low,Technical
+T004,Team C,2024-01-01 10:30:00,2024-01-01 11:00:00,"I love your product! Could you add a dark mode feature?",Medium,Feature
+T005,Team B,2024-01-01 11:00:00,2024-01-01 12:30:00,"I want a refund immediately! This service is terrible!",High,Billing
+T006,Team A,2024-01-01 11:30:00,2024-01-01 11:45:00,"Having trouble logging in, can you help?",Medium,Technical
+T007,Team C,2024-01-01 12:00:00,2024-01-01 13:15:00,"Great onboarding process! Very easy to follow",Low,Onboarding
+T008,Team B,2024-01-01 12:30:00,2024-01-01 13:00:00,"Need to update my payment method",Medium,Billing
+T009,Team A,2024-01-01 13:00:00,2024-01-01 13:30:00,"The app keeps crashing and it's really annoying!",High,Technical
+T010,Team C,2024-01-01 13:30:00,2024-01-01 14:45:00,"How do I use the advanced features? The documentation is helpful",Low,Support
+T011,Team B,2024-01-01 14:00:00,2024-01-01 15:30:00,"I want to cancel my subscription. The pricing is too high",High,Billing
+T012,Team A,2024-01-01 14:30:00,2024-01-01 14:45:00,"Setting up two-factor authentication",Medium,Technical
+T013,Team C,2024-01-01 15:00:00,2024-01-01 16:00:00,"Excellent integration capabilities! Works perfectly with our tools",Medium,Technical
+T014,Team B,2024-01-01 15:30:00,2024-01-01 16:15:00,"Can't download my invoice, please fix this",Low,Billing
+T015,Team A,2024-01-01 16:00:00,2024-01-01 16:30:00,"The app is running very slowly today, this is unacceptable",High,Technical
+T016,Team C,2024-01-01 16:30:00,2024-01-01 17:45:00,"Would love some training on the new features",Low,Training
+T017,Team B,2024-01-01 17:00:00,2024-01-01 18:30:00,"What are your current pricing plans?",Medium,Billing
+T018,Team A,2024-01-01 17:30:00,2024-01-01 17:45:00,"I'm concerned about the security of my data",High,Security
+T019,Team C,2024-01-01 18:00:00,2024-01-01 19:00:00,"The customization options are fantastic! Great work team",Medium,Feature
+T020,Team B,2024-01-01 18:30:00,2024-01-01 19:15:00,"My payment failed again! This is so frustrating!",High,Billing
+T021,Team A,2024-01-02 09:00:00,2024-01-02 09:20:00,"Thank you for fixing the issue so quickly! Great support!",High,Technical
+T022,Team B,2024-01-02 09:30:00,2024-01-02 10:00:00,"The billing system is confusing and needs improvement",Medium,Billing
+T023,Team C,2024-01-02 10:00:00,2024-01-02 10:30:00,"Love the new update! Everything works perfectly now",Low,Feature
+T024,Team A,2024-01-02 10:30:00,2024-01-02 11:00:00,"Still having issues with the login process",Medium,Technical
+T025,Team B,2024-01-02 11:00:00,2024-01-02 12:00:00,"The customer service is outstanding! Very helpful staff",High,Billing
+T026,Team C,2024-01-02 11:30:00,2024-01-02 12:15:00,"Need help with account configuration",Low,Onboarding
+T027,Team A,2024-01-02 12:00:00,2024-01-02 12:30:00,"The app is completely broken! This is ridiculous!",High,Technical
+T028,Team B,2024-01-02 12:30:00,2024-01-02 13:00:00,"Invoice generation is working well now",Medium,Billing
+T029,Team C,2024-01-02 13:00:00,2024-01-02 13:45:00,"Amazing product! Highly recommend to others",Low,Support
+T030,Team A,2024-01-02 13:30:00,2024-01-02 14:00:00,"Security features are excellent, very impressed",High,Security

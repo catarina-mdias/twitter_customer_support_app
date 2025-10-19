@@ -71,7 +71,7 @@ except ImportError:
 
 # Import RAG Insights (Phase 6)
 try:
-    from rag_insights import RAGInsightsEngine, render_rag_insights_ui
+    from src.rag_insights import RAGInsightsEngine, render_rag_insights_ui
     RAG_INSIGHTS_AVAILABLE = True
 except ImportError:
     RAG_INSIGHTS_AVAILABLE = True

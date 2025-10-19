@@ -74,7 +74,7 @@ try:
     from src.rag_insights import RAGInsightsEngine, render_rag_insights_ui
     RAG_INSIGHTS_AVAILABLE = True
 except ImportError:
-    RAG_INSIGHTS_AVAILABLE = True
+    RAG_INSIGHTS_AVAILABLE = False
 
 # Page configuration
 st.set_page_config(

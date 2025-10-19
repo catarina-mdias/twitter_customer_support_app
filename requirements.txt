@@ -28,7 +28,6 @@ redis>=4.5.0
 # Database connectors
 psycopg2-binary>=2.9.0
 pymysql>=1.1.0
-sqlite3
 
 # Additional API support
 slack-sdk>=3.21.0

@@ -22,8 +22,6 @@ import importlib.util
 import sys
 import os
 
-sys.path.append(os.path.dirname(__file__))
-
 # Import config.py directly to avoid package conflict
 config_path = os.path.join(os.path.dirname(__file__), 'config.py')
 spec = importlib.util.spec_from_file_location("config_module", config_path)

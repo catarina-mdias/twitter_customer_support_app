@@ -1,6 +1,10 @@
 # Customer Support Analytics App
 
-A streamlined analytics dashboard for evaluating **customer support performance**, **sentiment trends**, and **team efficiency** — with integrated **AI-powered RAG insights**.
+A streamlined analytics dashboard for evaluating **customer support performance**, **sentiment trends**, and **team efficiency**, with integrated **AI-powered RAG insights**.
+
+
+<em>Developed by Catarina Dias and João Figueiredo</em>
+
 
 ---
 
@@ -106,3 +110,4 @@ Example queries:
 
 **License:** MIT License  
 **Version:** Short README v1.0
+
